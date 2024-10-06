@@ -6,7 +6,7 @@ function App() {
   const [numAllowed, setNumAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
 
-  const passwordRef = useRef(null);
+  const passwordRef = useRef(password);
 
   const handleGenerate = useCallback(() => {
     const numbers = "0123456789";
@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     handleGenerate();
-  }, [numAllowed, charAllowed, setPassword, length]);
+  }, [numAllowed, charAllowed, length]);
 
   return (
     <>
@@ -49,7 +49,7 @@ function App() {
             className="outline-none w-full py-1 px-3"
             placeholder="password"
             readOnly
-            passwordRef={password}
+            ref={passwordRef}
           />
           <button
             onClick={copyPassward}
