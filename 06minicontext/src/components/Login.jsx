@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 
 const Login = () => {
-  const { username, setUserName } = useState("");
-  const { password, setPassword } = useState("");
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   const { setUser } = useContext(UserContext);
 
@@ -17,7 +17,9 @@ const Login = () => {
         type="text"
         placeholder="username"
         value={username}
-        onChange={(e) => setUserName(e.target.value)}
+        onChange={(e) => {
+          setUserName(e.target.value);
+        }}
       />
       <input
         type="password"

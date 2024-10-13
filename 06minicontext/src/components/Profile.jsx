@@ -4,6 +4,7 @@ import UserContext from "../context/UserContext";
 const Profile = () => {
   const { user } = useContext(UserContext);
   if (!user) return <div>Please Login</div>;
+  console.log(user);
   return (
     <div>
       <h1> User Profile</h1>
