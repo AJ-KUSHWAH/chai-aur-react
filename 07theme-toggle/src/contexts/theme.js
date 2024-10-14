@@ -6,8 +6,8 @@ export const ThemeContext = createContext({
   darkTheme: () => {},
 });
 
-export const useTheme = () => {
-  return useContext(ThemeContext);
-};
-
 export const ThemeProvider = ThemeContext.Provider;
+
+// export default useTheme = () => {
+//   return useContext(ThemeContext);
+// };
