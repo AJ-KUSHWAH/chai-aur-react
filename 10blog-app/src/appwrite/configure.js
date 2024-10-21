@@ -74,7 +74,50 @@ export class Service {
       );
     } catch (error) {
       throw error;
+      return false;
     }
+  }
+
+  async getPosts(queries = [Query.equal("status", "active")]) {
+    try {
+      return await this.database.listDocuments(
+        config.appWriteDatabaseId,
+        config.appWriteCollectionId,
+        queries
+      );
+    } catch (error) {
+      throw error;
+      return false;
+    }
+  }
+
+  //upload file services
+
+  async uploadFile(file) {
+    try {
+      return await this.storage.createFile(
+        config.appWriteBucketId,
+        ID.unique(),
+        file
+      );
+    } catch (error) {
+      throw error;
+      return false;
+    }
+  }
+
+  async deleteFile(fileId) {
+    try {
+      await this.storage.deleteFile(config.appWriteBucketId, fileId);
+      return true;
+    } catch (error) {
+      throw error;
+      return false;
+    }
+  }
+
+  getFilePreview(fileId) {
+    return this.storage.getFilePreview(config.appWriteBucketId, fileId);
   }
 }
 
